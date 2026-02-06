@@ -1,0 +1,35 @@
+global:
+  name: consul
+  metrics:
+    enabled: true
+  image: "hashicorp/consul-enterprise:1.22.2-ent"
+  acls:
+    manageSystemACLs: true
+  gossipEncryption:
+    autoGenerate: true
+  tls:
+    enableAutoEncrypt: true
+    enabled: true
+  enterpriseLicense:
+    secretName: 'consul-license'
+    secretKey: 'consul.hclic'
+    enableLicenseAutoload: true
+
+controller:
+  enabled: true
+
+connectInject:
+  enabled: true
+  apiGateway:
+    enabled: true
+    manageExternalCRDs: true
+
+server:
+  replicas: 1
+  enableAgentDebug: true
+
+ui:
+  enabled: true
+  service:
+    type: ClusterIP
+
